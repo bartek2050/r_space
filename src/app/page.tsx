@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Home() {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-main">
+        <div className="flex flex-col items-center justify-center min-h-screen">
             <div className="flex space-x-4">
                 <Link href="/get-server-side">
                     <button
