@@ -3,7 +3,6 @@
 import {use, useEffect, useState} from "react";
 import type {CreatorDetailsWithVideosDTO} from "@/api-models/creatorDetailsWithVideosDTO";
 import type {CreatorDetailsDTO} from "@/api-models/creatorDetailsDTO";
-import Image from "next/image";
 import Subtitle from "@/app/components/Subtitle";
 import VideoItem from "@/app/components/VideoItem";
 import ProductItem from "@/app/components/ProductItem";
@@ -56,7 +55,8 @@ export default function GetServerSideUser({params}: { params: Promise<{ userName
                 <section>
                     <Subtitle text="Products"/>
                     <div>
-                        {user.products.slice(0, 3).map((product) => (
+                        {user.products?.length === 0 && <p>Brak produktów</p>}
+                        {user.products?.slice(0, 3).map((product) => (
                             <ProductItem key={product.productId} product={product}/>
                         ))}
                     </div>
@@ -65,7 +65,8 @@ export default function GetServerSideUser({params}: { params: Promise<{ userName
                 <section>
                     <Subtitle text="Videos"/>
                     <div>
-                        {user.videos.slice(0, 3).map((video) => (
+                        {user.videos?.length === 0 && <p>Brak video</p>}
+                        {user.videos?.slice(0, 3).map((video) => (
                             <VideoItem key={video.id} video={video}/>
                         ))}
                     </div>
