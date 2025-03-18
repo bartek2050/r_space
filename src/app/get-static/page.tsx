@@ -1,5 +1,6 @@
 "use client";
 import {useEffect, useState} from "react";
+import Link from "next/link";
 
 export default function GetStatic() {
     const [creators, setCreators] = useState([]);
@@ -28,13 +29,13 @@ export default function GetStatic() {
     }, []);
 
     return (
-        <div>
-            <p className="text-gray-200">Get Static</p>
+        <div className="mt-30">
+            <p className="text-gray-200 text-center font-bold uppercase p-4">Get Static</p>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error.message}</p>}
             <div className="grid grid-cols-3 gap-4">
                 {creators.map((creator: string) => (
-                    <p key={creator}>{creator}</p>
+                    <Link href={`/get-static/${creator}`} key={creator}>{creator}</Link>
                 ))}
             </div>
         </div>

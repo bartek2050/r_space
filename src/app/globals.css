@@ -15,5 +15,5 @@
 }
 
 .bg-main {
-    background: linear-gradient(to bottom, var(--color-black) 90%, var(--color-darkgreen) 100%);
+    background: linear-gradient(to bottom, var(--color-black) 70%, var(--color-darkgreen) 100%);
 }

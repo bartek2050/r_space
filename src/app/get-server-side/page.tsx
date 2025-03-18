@@ -1,8 +1,9 @@
 "use client";
 import {useEffect, useState} from "react";
+import Link from "next/link";
 
 export default function GetServerSide() {
-    const [creators, setCreators] = useState([]);
+    const [creators, setCreators] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
 
@@ -28,13 +29,13 @@ export default function GetServerSide() {
     }, []);
 
     return (
-        <div className="mt-30">
-            <p className="text-gray-200">Get Server Side</p>
+        <div>
+            <p className="text-gray-200 text-center font-bold uppercase p-4">Get Server Side</p>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error.message}</p>}
             <div className="grid grid-cols-3 gap-4">
                 {creators.map((creator: string) => (
-                    <p key={creator}>{creator}</p>
+                    <Link href={`/get-server-side/${creator}`} key={creator}>{creator}</Link>
                 ))}
             </div>
         </div>
