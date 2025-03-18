@@ -28,7 +28,7 @@ export default function GetServerSide() {
     }, []);
 
     return (
-        <div>
+        <div className="mt-30">
             <p className="text-gray-200">Get Server Side</p>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error.message}</p>}

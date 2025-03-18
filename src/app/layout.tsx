@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Geist_Mono} from "next/font/google";
 import "./globals.css";
 import {ReactNode} from "react";
+import {Header} from "@/app/components/Header";
 
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
@@ -17,7 +18,8 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: { children: ReactNode }) {
     return (
         <html lang="pl">
-        <body className={`${geistMono.variable} antialiased min-h-screen bg-main text-gray-200 px-8`}>
+        <body className={`${geistMono.variable} antialiased bg-main text-gray-200 px-8`}>
+        <Header/>
         {children}
         </body>
         </html>
