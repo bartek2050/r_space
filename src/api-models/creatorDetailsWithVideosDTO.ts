@@ -10,18 +10,18 @@
  * Do not edit the class manually.
  */
 
-import { CreatorDetailsDTO } from "./creatorDetailsDTO";
-import { CreatorProductRecomendationDTO } from "./creatorProductRecomendationDTO";
-import { VideoRecommendationDTO } from "./videoRecommendationDTO";
+import {CreatorDetailsDTO} from "./creatorDetailsDTO";
+import {CreatorProductRecomendationDTO} from "./creatorProductRecomendationDTO";
+import {VideoRecommendationDTO} from "./videoRecommendationDTO";
 
 export interface CreatorDetailsWithVideosDTO {
-  /**
-   * List of videos.
-   */
-  videos: Array<VideoRecommendationDTO>;
-  /**
-   * List of videos.
-   */
-  products: Array<CreatorProductRecomendationDTO>;
-  creator: CreatorDetailsDTO;
+    /**
+     * List of videos.
+     */
+    videos?: Array<VideoRecommendationDTO>;
+    /**
+     * List of videos.
+     */
+    products?: Array<CreatorProductRecomendationDTO>;
+    creator: CreatorDetailsDTO;
 }
