@@ -7,7 +7,7 @@ import Subtitle from "@/app/components/Subtitle";
 import VideoItem from "@/app/components/VideoItem";
 import ProductItem from "@/app/components/ProductItem";
 import CreatorImage from "@/app/components/CreatorImage";
-import Form from "@/app/components/Form";
+import Form from "@/app/components/server-side/Form";
 import {API_URL} from "@/constant/api";
 
 export default function GetServerSideUser({params}: { params: Promise<{ userName: string }> }) {

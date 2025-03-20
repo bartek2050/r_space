@@ -1,4 +1,5 @@
-import {useForm, useFieldArray} from "react-hook-form";
+"use client";
+import {useForm, useFieldArray, Control, UseFormRegister, UseFormSetValue, FieldErrors} from "react-hook-form";
 import {useState} from "react";
 
 export default function FeatureForm() {
@@ -20,7 +21,7 @@ export default function FeatureForm() {
         name: "features",
     });
 
-    const onSubmit = (formData) => {
+    const onSubmit = (formData: { features: { name: string; variants: string[] }[] }) => {
         console.log(formData);
         reset()
     };
@@ -38,7 +39,8 @@ export default function FeatureForm() {
                             index={index}
                             errors={errors}
                         />
-                        <FeatureVariants control={control} index={index} register={register} errors={errors}/>
+                        <FeatureVariants control={control} index={index} register={register} errors={errors}
+                                         variantName={"features"}/>
                     </div>
                 ))}
 
@@ -61,7 +63,15 @@ export default function FeatureForm() {
     );
 }
 
-function FeatureInput({register, setValue, remove, index, errors}) {
+interface FeatureInputProps {
+    register: UseFormRegister<{ features: { name: string; variants: string[] }[] }>;
+    setValue: UseFormSetValue<{ features: { name: string; variants: string[] }[] }>;
+    remove: () => void;
+    index: number;
+    errors: FieldErrors<{ features: { name: string; variants: string[] }[] }>;
+}
+
+function FeatureInput({register, setValue, remove, index, errors}: FeatureInputProps) {
     const [isOpen, setIsOpen] = useState(false);
     const predefinedFeatures = ["Rozmiar", "Kolor", "Pojemność"];
 
@@ -118,10 +128,18 @@ function FeatureInput({register, setValue, remove, index, errors}) {
     );
 }
 
-function FeatureVariants({control, index, register, errors}) {
+interface FeatureVariantsProps {
+    control: Control<{ features: { name: string; variants: string[] }[] }>;
+    register: UseFormRegister<{ features: { name: string; variants: string[] }[] }>;
+    errors: FieldErrors<{ features: { name: string; variants: string[] }[] }>;
+    index: number;
+    variantName: `features`;
+}
+
+function FeatureVariants({control, index, register, errors, variantName}: FeatureVariantsProps) {
     const {fields, append, remove} = useFieldArray({
         control,
-        name: `features.${index}.variants`,
+        name: variantName,
     });
 
     return (
@@ -155,7 +173,7 @@ function FeatureVariants({control, index, register, errors}) {
             {fields.length < 10 && (
                 <button
                     type="button"
-                    onClick={() => append("")}
+                    onClick={() => append({name: "", variants: []})}
                     className="mt-2 w-full px-4 py-2 border border-white rounded-lg bg-transparent hover:bg-gray-700"
                 >
                     Dodaj wariant

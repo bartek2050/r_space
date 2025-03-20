@@ -7,7 +7,7 @@ export default function CreatorImage({name, photoUrl}: { name?: string; photoUrl
                 src={photoUrl}
                 alt={name || "Creator Image"}
                 width={100} height={100}
-                priority className="rounded-full"
+                priority className="rounded-full w-auto h-auto"
             />
         ) : (
             <p>Brak zdjęcia</p>
