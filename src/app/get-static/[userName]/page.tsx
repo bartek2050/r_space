@@ -10,7 +10,7 @@ import CreatorImage from "@/app/components/CreatorImage";
 import Form from "@/app/components/Form";
 import {API_URL} from "@/constant/api";
 
-export default function GetServerSideUser({params}: { params: Promise<{ userName: string }> }) {
+export default function GetStaticUser({params}: { params: Promise<{ userName: string }> }) {
     const resolvedParams = use(params);
     const [user, setUser] = useState<CreatorDetailsWithVideosDTO>({
         videos: [],

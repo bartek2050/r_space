@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import Link from "next/link";
 import {API_URL} from "@/constant/api";
 
-export default function GetServerSide() {
+export default function GetServerSidePage() {
     const [creators, setCreators] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
