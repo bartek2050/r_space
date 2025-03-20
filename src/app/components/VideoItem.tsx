@@ -10,7 +10,7 @@ export default function VideoItem({video}: { video: VideoRecommendationDTO }) {
                     src={video.thumbnails?.[0]?.photoUrl}
                     alt={video.videoTitle || "Video Image"}
                     width={100} height={100}
-                    priority className="rounded-full"
+                    priority className="rounded-full w-auto h-auto"
                 />
             )}
         </div>

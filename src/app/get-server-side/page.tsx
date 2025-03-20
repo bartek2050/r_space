@@ -24,7 +24,6 @@ export default function GetServerSide() {
                 setLoading(false);
             }
         }
-
         fetchCreators();
     }, []);
 

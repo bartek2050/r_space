@@ -7,6 +7,7 @@ import Subtitle from "@/app/components/Subtitle";
 import VideoItem from "@/app/components/VideoItem";
 import ProductItem from "@/app/components/ProductItem";
 import CreatorImage from "@/app/components/CreatorImage";
+import Form from "@/app/components/Form";
 
 export default function GetServerSideUser({params}: { params: Promise<{ userName: string }> }) {
     const resolvedParams = use(params);
@@ -43,7 +44,7 @@ export default function GetServerSideUser({params}: { params: Promise<{ userName
         <>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error.message}</p>}
-            <div className="flex flex-col items-center mt-8 gap-12">
+            <div className="flex flex-col items-center my-8 gap-16">
                 <section>
                     <Subtitle text="About creator"/>
                     <div className="flex flex-col items-center">
@@ -70,6 +71,11 @@ export default function GetServerSideUser({params}: { params: Promise<{ userName
                             <VideoItem key={video.id} video={video}/>
                         ))}
                     </div>
+                </section>
+
+                <section>
+                    <Subtitle text="Form"/>
+                    <Form/>
                 </section>
             </div>
         </>
